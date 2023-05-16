@@ -30,6 +30,7 @@ router.post(
  singleMulterUpload("image"),
  validateSignup,
  async (req, res) => {
+  // singleMulterUpload should look for a key of image
   const { password, username } = req.body;
   const profileImageUrl = req.file
    ? await singleFileUpload({ file: req.file, public: true })
@@ -39,7 +40,6 @@ router.post(
    password,
    profileImageUrl,
   });
-
   await setTokenCookie(res, user);
 
   return res.json({

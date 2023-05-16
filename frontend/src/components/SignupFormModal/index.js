@@ -17,7 +17,7 @@ function SignupFormModal() {
   e.preventDefault();
   if (password === confirmPassword) {
    setErrors([]);
-   return dispatch(sessionActions.signup({ username, password }))
+   return dispatch(sessionActions.signup({ username, password, image }))
     .then(closeModal)
     .catch(async (res) => {
      const data = await res.json();
@@ -33,6 +33,7 @@ function SignupFormModal() {
   const file = e.target.files[0];
   if (file) setImage(file);
  };
+ //File inputs are stored in the input object under files
 
  return (
   <>
